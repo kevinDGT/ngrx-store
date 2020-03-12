@@ -16,7 +16,7 @@ import {IAppState} from '../../store/state/app.state';
 @Injectable({ providedIn: 'root' })
 export class UserComponent implements OnInit, AfterViewInit {
   users$ = this.store.pipe(select('users'));
-  @Input() showBtn;
+  showBtn = true;
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email'];
   paginatorData = {
     page: 1,

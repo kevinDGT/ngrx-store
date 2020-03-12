@@ -41,7 +41,7 @@ export class AppComponent {
     this.appService.loginAPI(customerData).subscribe(res => {
       this.showLogin = false;
       this.userComponent.showBtn = true;
-      // this.router.navigate(['/user']).then(r => console.log(r));
+      this.router.navigate(['/user']).then(r => console.log(r));
     });
     this.checkoutForm.reset();
   }
