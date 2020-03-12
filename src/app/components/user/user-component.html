@@ -1,0 +1,52 @@
+<div style="width: 800px;">
+  <div class="card card-small" (click)="queryAPI()" tabindex="0" *ngIf="showBtn">
+    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+    </svg>
+
+    <span>Angular Material</span>
+  </div>
+
+  <div>
+    <table mat-table [dataSource]="(users$ | async).users" class="mat-elevation-z8" style="width:800px;">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Mail</th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [length]="paginatorData.length"
+                   [pageSize]="paginatorData.pageSize"
+                   [pageSizeOptions]="paginatorData.pageSizeOptions"
+                   (page)="pageEvent = $event">
+    </mat-paginator>
+
+    <mat-slider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>
+  </div>
+</div>
