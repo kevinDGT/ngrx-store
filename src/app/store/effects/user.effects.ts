@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Effect, ofType, Actions} from '@ngrx/effects';
 import {Store, select} from '@ngrx/store';
-import {of} from 'rxjs';
+import {Observable, ObservableInput, of} from 'rxjs';
 import {EUserActions, GetUsers, GetUsersSuccess} from '../actions/user.actions';
-import {switchMap} from 'rxjs/operators';
+import {map, switchMap} from 'rxjs/operators';
 import {IAppState} from '../state/app.state';
 import {IUserHttp} from '../../models/user-http.interface';
 import {UserService} from '../../services/user.service';
@@ -13,8 +13,11 @@ export class UserEffects {
   @Effect()
   getUsers$ = this._actions$.pipe(
     ofType<GetUsers>(EUserActions.GetUsers),
-    switchMap(() => this._userService.getUsers(null)),
-    switchMap((userHttp: IUserHttp) => of(new GetUsersSuccess(userHttp.users)))
+    switchMap(() => this._userService.getUsers({page: 1})),
+    map((res) => {
+      console.log(res);
+      this._store.dispatch(new GetUsersSuccess(res));
+    })
   );
 
   constructor(

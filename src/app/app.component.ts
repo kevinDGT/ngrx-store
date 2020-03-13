@@ -11,6 +11,7 @@ import {Store, select, State} from '@ngrx/store';
 import {IAppState} from './store/state/app.state';
 import {UserService} from './services/user.service';
 import {UserComponent} from './components/user/user.component';
+import {AuthService} from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -20,11 +21,13 @@ import {UserComponent} from './components/user/user.component';
 
 export class AppComponent {
   title = 'testApp';
+  testNumber = 5;
   showLogin = true;
   checkoutForm;
 
   constructor(
     private formBuilder: FormBuilder,
+    private authenticationService: AuthService,
     private appService: AppService,
     private router: Router,
     private store: Store<IAppState>,
@@ -38,10 +41,13 @@ export class AppComponent {
 
   onSubmit(customerData) {
     // Process checkout data here
-    this.appService.loginAPI(customerData).subscribe(res => {
-      this.showLogin = false;
-      this.userComponent.showBtn = true;
-      this.router.navigate(['/user']).then(r => console.log(r));
+    this.authenticationService.loginAPI(customerData).subscribe(res => {
+      if (res) {
+        this.showLogin = false;
+        this.userComponent.showBtn = res;
+        this.appService.getUser({id: 2});
+        this.router.navigate(['/user']);
+      }
     });
     this.checkoutForm.reset();
   }
