@@ -7,8 +7,8 @@ describe('AppService', () => {
     providers: [AppService]
   }));
 
-  // it('should be created', () => {
-  //   const service: AppService = TestBed.get(AppService);
-  //   expect(service).toBeTruthy();
-  // });
+  it('should be created', () => {
+    const service: AppService = new AppService(null);
+    expect(service).toBeTruthy();
+  });
 });
