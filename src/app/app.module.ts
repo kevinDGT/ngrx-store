@@ -23,6 +23,10 @@ import {appReducers} from './store/reducers/app.reducers';
 import {UserService} from './services/user.service';
 import {UserEffects} from './store/effects/user.effects';
 import {UserComponent} from './components/user/user.component';
+import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
+import {PdfViewerModule} from 'ng2-pdf-viewer';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 const appRoutes: Routes = [
   {path: 'random', component: RandomChildComponent},
@@ -51,7 +55,10 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([UserEffects])
+    EffectsModule.forRoot([UserEffects]),
+    NgxExtendedPdfViewerModule,
+    PdfViewerModule,
+    MatProgressBarModule
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]

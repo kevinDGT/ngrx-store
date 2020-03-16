@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RandomChildComponent implements OnInit {
 
-
+  pdfSrc = '../../../assets/LoremIpsumH101-2016.pdf';
+  progressValue = 0;
   constructor() { }
 
-  static getMagic() {
-    return 'working string';
+  onProgress(progressData) {
+    this.progressValue = progressData.loaded;
   }
 
 
