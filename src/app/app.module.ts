@@ -26,6 +26,8 @@ import {UserComponent} from './components/user/user.component';
 import {NgxExtendedPdfViewerModule} from 'ngx-extended-pdf-viewer';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { EditorComponent } from './components/editor/editor.component';
+import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 
 
 const appRoutes: Routes = [
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
-    RandomChildComponent
+    RandomChildComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ const appRoutes: Routes = [
     EffectsModule.forRoot([UserEffects]),
     NgxExtendedPdfViewerModule,
     PdfViewerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    CKEditorModule
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]
