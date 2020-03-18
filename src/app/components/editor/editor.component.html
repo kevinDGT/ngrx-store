@@ -1,5 +1,11 @@
-<!--<ckeditor [editor]="editor" [data]="dataHtml" style="width:800px;"></ckeditor>-->
-
-<div id="editor"></div>
-
-<button mat-button (click)="uploadData()">Upload</button>
+<div class="content" role="main">
+  <mat-card style="margin-bottom: 20px; width: 800px;">
+    <mat-card-content>
+<!--      <ckeditor #editor [editor]="Editor"-->
+<!--                [(ngModel)]="dataHtml" [data]="dataHtml" style="width:800px;"-->
+<!--                (ready)="onReady($event)" [config]="editorConfig"></ckeditor>-->
+      <div id="editor"></div>
+      <button mat-button (click)="uploadData()">Upload</button>
+    </mat-card-content>
+  </mat-card>
+</div>

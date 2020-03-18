@@ -1,11 +1,10 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
-// import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
-// import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-// import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-// import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
-// import SimpleuploadPlugin from 'ckeditor5-simple-upload/src/simpleupload';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
+import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
+import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 @Component({
   selector: 'app-editor',
@@ -13,24 +12,46 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit, AfterViewInit {
-  public editor = ClassicEditor;
-  public dataHtml  = '<p>Hello, world!</p>';
   constructor() { }
+  public Editor = ClassicEditor;
+  public dataHtml  = '<p>Hello, world!</p>';
+  public editorConfig = {
+    plugins: [ Essentials, Paragraph, Bold, Italic, Base64UploadAdapter ],
+    toolbar: {
+      items: [
+        'bold',
+        'italic'
+      ]
+    },
+    // image: {
+    //   toolbar: [
+    //     'imageStyle:full',
+    //     'imageStyle:side',
+    //     '|',
+    //     'imageTextAlternative'
+    //   ]
+    // },
+    language: 'en',
+    data: this.dataHtml
+  };
 
   ngOnInit(): void {
-
   }
 
   ngAfterViewInit(): void {
-    ClassicEditor.create(document.querySelector('#editor'), {
-      // plugins: [Essentials, UploadAdapter, Autoformat, Bold, Italic, BlockQuote, Heading, Image, SimpleuploadPlugin]
-    })
-      .then(newEditor => this.editor = newEditor)
-      .catch(error => console.error(error));
+    ClassicEditor.create(document.querySelector('#editor'), this.editorConfig)
+      .then(newEditor => this.Editor = newEditor)
+      .catch( error => {
+        console.error( error );
+      });
+  }
+
+  onReady(e) {
+    console.log(e);
   }
 
   uploadData() {
-    console.log(this.editor.getData());
+    console.log(this.Editor.getData());
   }
 
 }

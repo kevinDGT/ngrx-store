@@ -13,11 +13,8 @@ export class UserEffects {
   @Effect()
   getUsers$ = this._actions$.pipe(
     ofType<GetUsers>(EUserActions.GetUsers),
-    switchMap(() => this._userService.getUsers({page: 1})),
-    map((res) => {
-      console.log(res);
-      this._store.dispatch(new GetUsersSuccess(res));
-    })
+    switchMap(() => this._userService.getUsers(null)),
+    switchMap(res => of(new GetUsersSuccess(res)))
   );
 
   constructor(
