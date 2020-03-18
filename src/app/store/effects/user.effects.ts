@@ -14,9 +14,9 @@ export class UserEffects {
   getUsers$ = this._actions$.pipe(
     ofType<GetUsers>(EUserActions.GetUsers),
     switchMap(() => this._userService.getUsers({page: 1})),
-    map((res) => {
+    switchMap((res) => {
       console.log(res);
-      this._store.dispatch(new GetUsersSuccess(res));
+      return of(new GetUsersSuccess(res));
     })
   );
 
@@ -25,5 +25,6 @@ export class UserEffects {
     private _userService: UserService,
     private _actions$: Actions,
     private _store: Store<IAppState>
-  ) {}
+  ) {
+  }
 }
