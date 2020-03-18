@@ -1,11 +1,11 @@
 <div class="content" role="main">
-  <mat-card style="margin-bottom: 20px; width: 800px;">
+  <mat-card  style="width: 800px; margin-right: auto; margin-left: auto;">
     <mat-card-content>
-<!--      <ckeditor #editor [editor]="Editor"-->
-<!--                [(ngModel)]="dataHtml" [data]="dataHtml" style="width:800px;"-->
-<!--                (ready)="onReady($event)" [config]="editorConfig"></ckeditor>-->
-      <div id="editor"></div>
-      <button mat-button (click)="uploadData()">Upload</button>
+      <ckeditor #editor [editor]="Editor"
+                [(ngModel)]="dataHtml" [data]="dataHtml"
+                (ready)="onReady($event)"></ckeditor>
+<!--      <div id="editor"></div>-->
+      <button mat-flat-button color="primary" (click)="uploadData()" style="margin-top: 15px">Print HTML</button>
     </mat-card-content>
   </mat-card>
 </div>

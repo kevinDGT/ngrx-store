@@ -1,11 +1,4 @@
-<div style="width: 800px;">
-  <div class="card card-small" (click)="queryAPI()" tabindex="0" *ngIf="showBtn">
-    <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-    </svg>
-
-    <span>Angular Material</span>
-  </div>
+<div style="width: 800px; margin-right: auto; margin-left: auto;">
 
   <div>
     <table mat-table [dataSource]="(users$ | async).users" class="mat-elevation-z8" style="width:800px;">
@@ -46,8 +39,5 @@
                    [pageSizeOptions]="paginatorData.pageSizeOptions"
                    (page)="pageEvent = $event">
     </mat-paginator>
-
-    <a routerLink="/random"><button>GoToPDF</button></a>
-    <a routerLink="/editor" class="pull-right"><button>GoToEditor</button></a>
   </div>
 </div>

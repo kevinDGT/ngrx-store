@@ -329,24 +329,27 @@
 </div>
 
 <div class="content" role="main">
-<h1>{{title}}</h1>
+  <h1>{{title}}</h1>
   <span>testApp app is running!</span>
     <mat-card style="margin-bottom: 20px" *ngIf="showLogin">
 
       <mat-card-content>
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <a routerLink="/user"><button mat-raised-button color="primary" style="margin-right: 10px">USERS LIST</button></a>
+        <a routerLink="/editor"><button mat-raised-button color="accent" style="margin-right: 10px">CKEDITOR</button></a>
+        <a routerLink="/random"><button mat-raised-button color="warn">PDF READER</button></a>
+<!--        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">-->
 
-          <mat-form-field>
-            <input matInput placeholder="Username" type="text" value="" formControlName="user">
-          </mat-form-field>
-          <br/>
-          <mat-form-field>
-            <input matInput placeholder="Password" type="password" value="" formControlName="password">
-          </mat-form-field>
-          <br/>
+<!--          <mat-form-field>-->
+<!--            <input matInput placeholder="Username" type="text" value="" formControlName="user">-->
+<!--          </mat-form-field>-->
+<!--          <br/>-->
+<!--          <mat-form-field>-->
+<!--            <input matInput placeholder="Password" type="password" value="" formControlName="password">-->
+<!--          </mat-form-field>-->
+<!--          <br/>-->
 
-          <button mat-button class="button" type="submit">Login</button>
-        </form>
+<!--          <button mat-button class="button" type="submit">Login</button>-->
+<!--        </form>-->
       </mat-card-content>
     </mat-card>
 
