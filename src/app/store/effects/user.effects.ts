@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Effect, ofType, Actions} from '@ngrx/effects';
-import {Store, select} from '@ngrx/store';
-import {Observable, ObservableInput, of} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {of} from 'rxjs';
 import {EUserActions, GetUsers, GetUsersSuccess} from '../actions/user.actions';
-import {map, switchMap} from 'rxjs/operators';
+import {switchMap} from 'rxjs/operators';
 import {IAppState} from '../state/app.state';
-import {IUserHttp} from '../../models/user-http.interface';
 import {UserService} from '../../services/user.service';
 
 @Injectable()
@@ -25,6 +24,5 @@ export class UserEffects {
     private _userService: UserService,
     private _actions$: Actions,
     private _store: Store<IAppState>
-  ) {
-  }
+  ) {}
 }
