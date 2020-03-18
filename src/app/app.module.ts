@@ -5,7 +5,6 @@ import {AuthService} from './auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RandomChildComponent} from './components/random-child/random-child.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -28,19 +27,21 @@ import {PdfViewerModule} from 'ng2-pdf-viewer';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { EditorComponent } from './components/editor/editor.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { ReaderComponent } from './components/reader/reader.component';
 
 
 const appRoutes: Routes = [
-  {path: 'random', component: RandomChildComponent},
-  {path: 'user', component: UserComponent}
+  {path: 'reader', component: ReaderComponent},
+  {path: 'user', component: UserComponent},
+  {path: 'editor', component: EditorComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    RandomChildComponent,
-    EditorComponent
+    EditorComponent,
+    ReaderComponent
   ],
   imports: [
     BrowserModule,

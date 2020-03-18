@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic/';
-import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 @Component({
   selector: 'app-editor',

@@ -1,7 +1,7 @@
-<div style="width: 800px; margin-right: auto; margin-left: auto;">
+<div style="width: 50%; margin-right: auto; margin-left: auto;">
 
-  <div>
-    <table mat-table [dataSource]="(users$ | async).users" class="mat-elevation-z8" style="width:800px;">
+  <mat-card>
+    <table mat-table [dataSource]="(users$ | async).users" class="mat-elevation-z0" style="width:100%;">
 
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -39,5 +39,5 @@
                    [pageSizeOptions]="paginatorData.pageSizeOptions"
                    (page)="pageEvent = $event">
     </mat-paginator>
-  </div>
+  </mat-card>
 </div>

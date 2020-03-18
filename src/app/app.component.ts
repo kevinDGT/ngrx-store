@@ -2,14 +2,9 @@ import {AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild} from '@an
 import {FormBuilder} from '@angular/forms';
 
 import {AppService} from './app.service';
-import {RandomChildComponent} from './components/random-child/random-child.component';
-import {MatPaginator, PageEvent} from '@angular/material/paginator';
-import {map, take, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import {GetUsers, GetUsersSuccess} from './store/actions/user.actions';
 import {Store, select, State} from '@ngrx/store';
 import {IAppState} from './store/state/app.state';
-import {UserService} from './services/user.service';
 import {UserComponent} from './components/user/user.component';
 import {AuthService} from './auth.service';
 
