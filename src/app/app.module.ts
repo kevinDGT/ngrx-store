@@ -29,6 +29,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import { ReaderComponent } from './components/reader/reader.component';
 import { SignatureComponent } from './components/signature/signature.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   {path: 'reader', component: ReaderComponent},
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     UserComponent,
     EditorComponent,
     ReaderComponent,
-    SignatureComponent
+    SignatureComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

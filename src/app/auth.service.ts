@@ -6,22 +6,20 @@ import {HttpClient} from '@angular/common/http';
 /** Mock client-side authentication/authorization service */
 @Injectable()
 export class AuthService {
+  private token = null;
   constructor(private http: HttpClient) {
   }
 
-  params: any = {
-    email: 'eve.holt@reqres.in',
-    password: 'cityslicka'
-  };
-
   loginAPI(customerData): Observable<any> {
-    return this.http.post('https://reqres.in/api/login', this.params).pipe(map(res => {
-      console.log(res);
+    return this.http.post('https://reqres.in/api/login', customerData).pipe(map(res => {
+      this.token = res;
       return res;
     }));
   }
 
   getAuthorizationToken() {
-    return 'some-auth-token';
+    if (this.token && this.token.hasOwnProperty('token')) {
+      return this.token.token;
+    }
   }
 }
