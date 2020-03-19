@@ -28,7 +28,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { EditorComponent } from './components/editor/editor.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import { ReaderComponent } from './components/reader/reader.component';
-
+import { SignatureComponent } from './components/signature/signature.component';
 
 const appRoutes: Routes = [
   {path: 'reader', component: ReaderComponent},
@@ -41,7 +41,8 @@ const appRoutes: Routes = [
     AppComponent,
     UserComponent,
     EditorComponent,
-    ReaderComponent
+    ReaderComponent,
+    SignatureComponent
   ],
   imports: [
     BrowserModule,

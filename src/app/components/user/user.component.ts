@@ -8,9 +8,9 @@ import {IAppState} from '../../store/state/app.state';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'user-component',
-  templateUrl: './user-component.html',
-  styleUrls: ['./user-component.scss']
+  selector: 'user.component',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.scss']
 })
 
 @Injectable({ providedIn: 'root' })

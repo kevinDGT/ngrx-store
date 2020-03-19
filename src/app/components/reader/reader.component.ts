@@ -13,9 +13,13 @@ export class ReaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    for (let i = 0; i <= this.delay; i++) {
-      this.progressValue = i;
-    }
   }
 
+  pdfLoaded($event) {
+    this.progressValue = 100 / $event.pagesCount;
+  }
+
+  pagesLoaded($event) {
+    this.progressValue = 100;
+  }
 }
