@@ -9,12 +9,14 @@ import SignaturePad from 'signature_pad';
 export class SignatureComponent implements OnInit, AfterViewInit {
 
   private signaturePad;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
-    const canvas = document.getElementById('signature-pad')  as HTMLCanvasElement;
+    const canvas = document.getElementById('signature-pad') as HTMLCanvasElement;
     this.signaturePad = new SignaturePad(canvas, {
-      backgroundColor: 'rgba(255, 255, 255, 0)',
+      backgroundColor: 'rgb(255, 255, 255)',
       penColor: 'rgb(0, 0, 0)',
       maxWidth: 1
     });
@@ -25,18 +27,20 @@ export class SignatureComponent implements OnInit, AfterViewInit {
       this.signaturePad.clear();
     });
 
-    function resizeCanvas() {
-      const canvas = document.getElementById('signature-pad')  as HTMLCanvasElement;
-      const ratio =  Math.max(window.devicePixelRatio || 1, 1);
-      canvas.width = canvas.offsetWidth * ratio;
-      canvas.height = canvas.offsetHeight * ratio;
-      canvas.getContext('2d').scale(ratio, ratio);
-      // if (this.signaturePad && typeof this.signaturePad !== undefined) {
-      //   this.signaturePad.clear();
-      // }// otherwise isEmpty() might return incorrect value
-    }
+    document.getElementById('save').addEventListener('click', (event) => {
+      const fullQuality = this.signaturePad.toDataURL('image/jpeg', 1.0);
+    });
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    window.addEventListener('resize', this.resizeCanvas);
+    this.resizeCanvas();
+  }
+
+  resizeCanvas() {
+    const canvas = document.getElementById('signature-pad')  as HTMLCanvasElement;
+    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+    canvas.width = canvas.offsetWidth * ratio;
+    canvas.height = canvas.offsetHeight * ratio;
+    canvas.getContext('2d').scale(ratio, ratio);
+    this.signaturePad.clear();
   }
 }
