@@ -21,5 +21,6 @@ export class AuthService {
     if (this.token && this.token.hasOwnProperty('token')) {
       return this.token.token;
     }
+    return 'fakeToken'; // almeno non mi devo loggare di continuo
   }
 }

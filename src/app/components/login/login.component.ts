@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../../auth.service';
+import {AuthService} from '../../services/auth.service';
 import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.loginAPI(customerData).subscribe(res => {
       if (res.token !== null) {
         const returnUrl = this.router.routerState.snapshot.root.queryParams.returnUrl;
-        this.router.navigate([returnUrl]);
+        this.router.navigate([typeof returnUrl !== 'undefined' ? returnUrl : '/user']);
       }
     });
     this.checkoutForm.reset();

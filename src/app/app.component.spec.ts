@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import {AppModule} from './app.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AuthService} from './auth.service';
+import {AuthService} from './services/auth.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {

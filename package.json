@@ -38,6 +38,7 @@
     "@ngrx/store-devtools": "^8.6.0",
     "ng2-pdf-viewer": "^6.1.2",
     "ngx-extended-pdf-viewer": "^2.0.0",
+    "pdfjs-dist": "^2.2.228",
     "rxjs": "~6.5.4",
     "signature_pad": "^3.0.0-beta.3",
     "tslib": "^1.11.1",
