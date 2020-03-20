@@ -29,6 +29,7 @@ export class SignatureComponent implements OnInit, AfterViewInit {
 
     document.getElementById('save').addEventListener('click', (event) => {
       const fullQuality = this.signaturePad.toDataURL('image/jpeg', 1.0);
+      console.log(fullQuality);
     });
 
     window.addEventListener('resize', this.resizeCanvas);

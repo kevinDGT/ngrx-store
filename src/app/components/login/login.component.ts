@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private checkoutForm: FormGroup;
+  public checkoutForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
     // Process checkout data here
     this.authenticationService.loginAPI(customerData).subscribe(res => {
       if (res.token !== null) {
-        this.router.navigate(['/user']);
+        const returnUrl = this.router.routerState.snapshot.root.queryParams.returnUrl;
+        this.router.navigate([returnUrl]);
       }
     });
     this.checkoutForm.reset();
