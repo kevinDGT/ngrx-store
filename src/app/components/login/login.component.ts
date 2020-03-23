@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
       email: 'eve.holt@reqres.in',
       password: 'cityslicka'
     });
+    // this.checkoutForm = this.formBuilder.group({
+    //   email: '',
+    //   password: ''
+    // });
   }
 
   onSubmit(customerData) {
