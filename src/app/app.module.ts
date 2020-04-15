@@ -16,7 +16,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {Routes, RouterModule} from '@angular/router';
 
 import {StoreModule} from '@ngrx/store';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {appReducers} from './store/reducers/app.reducers';
 import {UserService} from './services/user.service';

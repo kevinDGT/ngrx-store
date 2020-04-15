@@ -1,11 +1,17 @@
-<mat-card style="width: 80%; margin-right: auto; margin-left: auto; height: 65%;">
+<div class="input-container">
+  <input matInput #url type="text" placeholder="Inserire url..." style="margin-right: 15px;" [(ngModel)]="pdfSrc">
+  <button type="button" mat-raised-button color="primary" (click)="loadPdf($event)"> Visualizza</button>
+</div>
+
+<mat-card class="reader-container" *ngIf="validUrl">
+
   <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
-<!--  <ngx-extended-pdf-viewer [base64Src]="bb" useBrowserLocale="true" height="100%"-->
-<!--                           [delayFirstView]="delay"-->
-<!--                           (pagesLoaded)="pagesLoaded($event)"-->
-<!--                           (pdfLoaded)="pdfLoaded($event)"-->
-<!--  ></ngx-extended-pdf-viewer>-->
-  <pdf-viewer [src]="pdf" [render-text]="true" style="display: block; height: 100%; background: #aaa"
+  <!--  <ngx-extended-pdf-viewer [base64Src]="bb" useBrowserLocale="true" height="100%"-->
+  <!--                           [delayFirstView]="delay"-->
+  <!--                           (pagesLoaded)="pagesLoaded($event)"-->
+  <!--                           (pdfLoaded)="pdfLoaded($event)"-->
+  <!--  ></ngx-extended-pdf-viewer>-->
+  <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block; height: 100%; background: #aaa"
               [page]="1" [stick-to-page]="true" [show-borders]="true" [original-size]="false"
               (on-progress)="onProgress($event)" (after-load-complete)="callBackFn($event)"
               (error)="onError($event)"></pdf-viewer>
